@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven3'
+        jdk 'JDK11'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/YOUR_USERNAME/maven-login-app.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy WAR to Tomcat
+                sh 'cp target/*.war /opt/tomcat/webapps/login.war'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build and Deployment Successful!'
+        }
+        failure {
+            echo 'Something went wrong.'
+        }
+    }
+}
+

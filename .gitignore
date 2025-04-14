@@ -1,0 +1,20 @@
+# Maven
+target/
+*.log
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
